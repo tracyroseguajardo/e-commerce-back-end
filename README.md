@@ -43,4 +43,4 @@ If you have further questions you may send me an email at: tracyroseguajardo@gma
 ## Visuals
 
 Link to walkthrough video:
-[E-commerce Back End walkthrough video]()
+[E-commerce Back End walkthrough video](https://watch.screencastify.com/v/xGXj616wlXnOWsRoECgn)
