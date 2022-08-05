@@ -5,9 +5,9 @@ const { Category, Product } = require('../../models');
 
 router.get('/', async (req, res) => {
   try {
-    // find all categories
+    // finds all categories
     const categoryData = await Category.findAll({
-      // be sure to include its associated Products
+      // includes its associated Products
       include: [{ model: Product }],
     });
     res.status(200).json(categoryData);
@@ -17,9 +17,9 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  // find one category by its `id` value
+  // finds one category by its `id` value
   try {
-    // be sure to include its associated Products
+    // includes its associated Products
     const categoryData = await Category.findByPk(req.params.id,{
       include: [{ model: Product }],
     });
@@ -53,8 +53,6 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       },
     });
-
-  
     res.status(200).json({ message: "Your category has been updated!" });
   } catch (err) {
     res.status(500).json(err);
