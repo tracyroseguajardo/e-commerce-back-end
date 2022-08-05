@@ -26,7 +26,8 @@ router.get('/:id', async (req, res) => {
       // be sure to include its associated Category and Tag data
       include: [Category, { model: Tag, through: ProductTag }]
     });
-  }catch (err) {
+    res.status(200).json(productData);
+  } catch (err) {
     res.status(500).json(err);
   }
 });
