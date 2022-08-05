@@ -33,9 +33,9 @@ router.post('/', async (req, res) => {
   try {
     // create a new tag
     const tagData = await Tag.create(req.body);
-    res.status(200).json(tagData);
+    res.status(200).json({ message: "Tag successfully created!"});
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: "Error creating new tag."});
   }
 });
 
@@ -47,7 +47,7 @@ router.put('/:id', async (req, res) => {
         id: req.params.id,
       },
     });
-    res.status(200).json(tagData);
+    res.status(200).json({ message: "Your tag has been updated!" });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -61,7 +61,11 @@ router.delete('/:id', async (req, res) => {
       id: req.params.id,
     },
   });
-  res.status(200).json(tagData);
+  if (!tagData) {
+    res.status(404).json({ message: "No tag with this id!" });
+    return;
+  }
+  res.status(200).json({ message: "Tag has been deleted!"});
   } catch (err) {
     res.status(500).json(err);
   }
